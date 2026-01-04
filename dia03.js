@@ -28,7 +28,7 @@ const numbers = [3, 7, -2, 8, 10];
 
 const hasNegative = numbers.some((number) => number < 0);
 
-if(hasNegative) {
+if (hasNegative) {
   console.log("Existe ao menos um número negativo.")
 }
 
@@ -52,9 +52,9 @@ const permissions = ["USER", "EDITOR", "ADMIN"];
 
 const isAdmin = permissions.includes("ADMIN");
 
-if(isAdmin) {
+if (isAdmin) {
   console.log("O usuário é administrador.")
-} 
+}
 
 /* Exercício 6 — map
 Considere o array abaixo:
@@ -99,12 +99,14 @@ const sales = [
   { product: "Mouse", value: 100 },
   { product: "Notebook", value: 3000 },
   { product: "Mouse", value: 100 }
-  ]; 
+];
 
-  const totalSales = sales.reduce((acc, productValue) => acc + productValue.value, 0);
-  const obj = { total: totalSales };
+const totalSales = sales.reduce((acc, productSale) => {
+  acc[productSale.product] = (acc[productSale.product] || 0) + productSale.value;
+  return acc;
+}, {});
 
-  console.log(obj);
+console.log(totalSales);
 
 /*
 Exercício 10 — sort
@@ -113,7 +115,7 @@ Gere um novo array ordenado em ordem crescente sem modificar o array original.
 */
 const ages = [33, 21, 45, 18, 29];
 
-const orderedAges = ages.sort();
+const orderedAges = [...ages].sort((a, b) => a - b);
 
 console.log(orderedAges);
 
@@ -156,7 +158,7 @@ const usrs = [
   { name: "Pedro", skills: ["JS", "React"] }
 ];
 
-const allSkills = usrs.flatMap(usrs => usrs.skills)
+const allSkills = usrs.flatMap(usr => usr.skills)
 
 console.log(allSkills)
 

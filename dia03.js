@@ -164,3 +164,97 @@ console.log(allSkills)
 
 // Então o flatmap recebe como parâmetro uma callback function onde tem como argumento o nome do array a ser utilizado e depois da "arrow" o dado do objeto a ser inserido no novo array, é isso?
 
+/*Exercício 15 — filter + map
+Considere o array abaixo:
+Gere um array contendo apenas os nomes dos produtos disponíveis.
+*/
+const products = [
+  { name: "Notebook", price: 3000, available: true },
+  { name: "Mouse", price: 100, available: false },
+  { name: "Keyboard", price: 200, available: true }
+];
+
+const productsAvailable = products.filter((product) => product.available === true)
+  .map((product) => product.name);
+console.log(productsAvailable);
+
+/* 
+Exercício 16 — filter + reduce
+Considere o array abaixo:
+Calcule o saldo final.
+*/
+const transactions = [
+  { value: 1000, type: "entrada" },
+  { value: 300, type: "saida" },
+  { value: 200, type: "saida" }
+];
+
+const balance = transactions.reduce((acc, transaction) => {
+  return transaction.type === "entrada" ? acc + transaction.value : acc - transaction.value
+}, 0)
+
+/*Exercício 17 — find
+
+Considere o array abaixo:
+Encontre o primeiro usuário que possua a permissão "EDITOR".
+ */
+
+const users17 = [
+  { name: "Lucas", permissions: ["USER"] },
+  { name: "Ana", permissions: ["USER", "EDITOR"] },
+  { name: "Pedro", permissions: ["USER", "ADMIN"] }
+];
+
+const firstEditor = users17.find((user) => user.permissions.includes("EDITOR"));
+console.log(firstEditor);
+
+/*
+Exercício 18 — every
+Considere o array abaixo:
+Verifique se todos os formulários estão válidos.
+*/
+const forms = [
+  { valid: true },
+  { valid: true },
+  { valid: false }
+];
+const allFormsValid = forms.every((form) => form.valid === true);
+console.log(allFormsValid);
+
+/*
+Exercício 19 — Validação backend (some)
+Considere o array abaixo:
+Verifique se existe algum pedido com status "PENDENTE".
+ */
+const orders = [
+  { id: 1, status: "FINALIZADO" },
+  { id: 2, status: "PENDENTE" },
+  { id: 3, status: "FINALIZADO" }
+];
+const isPending = orders.some((order) => order.status === "PENDENTE");
+console.log(isPending);
+
+/*Exercício 20 — Desafio final (completo)
+Considere o array abaixo:
+Gere um objeto contendo:
+1) total de usuários
+2) total de usuários ativos
+3) média de idade dos usuários ativos
+ */
+
+const users20 = [
+  { name: "Lucas", age: 33, active: true },
+  { name: "Ana", age: 28, active: false },
+  { name: "Pedro", age: 40, active: true }
+];
+
+const totalActiveUsers = users20.filter((user) => user.active === true);
+const totalAge = users20.reduce((acc, user) => acc + user.age, 0)
+
+const usersObj = {
+  totalUsers: users20.length,
+  totalActiveUsers: totalActiveUsers.length,
+  usersAgeAverage: totalAge / totalActiveUsers.length
+}
+
+console.log(usersObj)

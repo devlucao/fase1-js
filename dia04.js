@@ -73,7 +73,7 @@ Crie uma função que receba:
 E retorne o novo saldo. */
 
 const newBalance = (balance, ammount, type) => {
-    if(balance == null) return "É necessário informar o valor do saldo inicial.";
+    if(!balance) return "É necessário informar o valor do saldo inicial.";
     if(!ammount) return "É necessário informar um valor para o cálculo.";
     if(!type) return "Transação inexistente";
     if(type !== "entrada" && type !== "saida") return "Transação inválida";
